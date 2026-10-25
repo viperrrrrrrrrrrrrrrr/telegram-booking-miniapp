@@ -1,0 +1,17 @@
+# Reminders Worker — Cron Trigger every 10 minutes (Workers Free plan includes Cron Triggers).
+name = "tg-booking-reminders"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["*/10 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tg-booking-db"
+# Replace with the id printed by `npx wrangler d1 create tg-booking-db` (same DB as the Pages project).
+database_id = "<your-d1-database-id>"
+
+[vars]
+TELEGRAM_API_BASE = "https://api.telegram.org"
+# Secret (never commit): npx wrangler secret put BOT_TOKEN

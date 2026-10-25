@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Telegram theme → CSS variables (set by src/telegram/theme.ts) → Tailwind colours */
+@theme inline {
+  --color-tg-bg: var(--c-bg);
+  --color-tg-section: var(--c-section);
+  --color-tg-text: var(--c-text);
+  --color-tg-hint: var(--c-hint);
+  --color-tg-link: var(--c-link);
+  --color-tg-button: var(--c-button);
+  --color-tg-button-text: var(--c-button-text);
+  --color-tg-accent: var(--c-accent);
+  --color-tg-section-header: var(--c-section-header);
+  --color-tg-separator: var(--c-separator);
+  --color-tg-subtitle: var(--c-subtitle);
+  --color-tg-destructive: var(--c-destructive);
+  --color-tg-header: var(--c-header);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Fallback palette before JS runs (kept in sync with theme.ts) */
+:root {
+  --c-bg: #f4f1f2; --c-section: #ffffff; --c-text: #1b1416; --c-hint: #6b6166; --c-link: #b22f64;
+  --c-button: #b22f64; --c-button-text: #ffffff; --c-accent: #b22f64; --c-section-header: #9a2a57;
+  --c-separator: #ebe4e7; --c-subtitle: #6b6166; --c-destructive: #cc2238; --c-header: #f4f1f2;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --c-bg: #131012; --c-section: #221e21; --c-text: #f6eef1; --c-hint: #a99fa4; --c-link: #f493b8;
+  --c-button: #f06b9c; --c-button-text: #1a0a11; --c-accent: #f493b8; --c-section-header: #f493b8;
+  --c-separator: #342e32; --c-subtitle: #a99fa4; --c-destructive: #ff6b7a; --c-header: #131012;
+  color-scheme: dark;
+}
+
+html { background: var(--c-bg); -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body {
+  margin: 0; background: var(--c-bg); color: var(--c-text);
+  font-family: var(--font-sans); -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none;
+  transition: background-color .25s ease, color .25s ease;
+}
+/* Telegram 8.0+ safe areas (vars injected by telegram-web-app.js), plus browser notches */
+.app-shell {
+  overflow-x: clip;
+  padding-top: calc(var(--tg-safe-area-inset-top, 0px) + var(--tg-content-safe-area-inset-top, 0px));
+  padding-bottom: calc(var(--tg-safe-area-inset-bottom, 0px) + var(--tg-content-safe-area-inset-bottom, 0px));
+  padding-left: max(env(safe-area-inset-left), var(--tg-safe-area-inset-left, 0px));
+  padding-right: max(env(safe-area-inset-right), var(--tg-safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  html:not(.tg) body { background: radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--c-button) 14%, var(--c-bg)), var(--c-bg)); min-height: 100dvh; }
+}
+
+:focus-visible { outline: 2px solid var(--c-button); outline-offset: 2px; border-radius: 10px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }
+.row-sep + .row-sep { box-shadow: inset 0 1px 0 var(--c-separator); }
+.tap { transition: transform .12s ease, background-color .2s ease, opacity .2s ease; cursor: pointer; user-select: none; }
+.tap:active:not(:disabled) { transform: scale(.97); }
+
+.hero { background: linear-gradient(140deg, color-mix(in oklab, var(--c-button) 16%, var(--c-section)), var(--c-section) 70%); }
+.hero-blob {
+  position: absolute; right: -40px; top: -50px; width: 180px; height: 180px; border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, #ffb3cf, #b48cff 60%, transparent 70%); opacity: .45; filter: blur(6px);
+  animation: float 9s ease-in-out infinite;
+}
+.skeleton { background: linear-gradient(90deg, var(--c-section) 25%, color-mix(in oklab, var(--c-hint) 14%, var(--c-section)) 50%, var(--c-section) 75%); background-size: 200% 100%; animation: shimmer 1.3s linear infinite; }
+.live-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@keyframes float { 50% { transform: translate(-10px, 12px) scale(1.05); } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes pulse-dot { 50% { opacity: .35; } }
+@keyframes in-fwd { from { opacity: 0; transform: translateX(24px); } }
+@keyframes in-back { from { opacity: 0; transform: translateX(-24px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes pop { from { transform: scale(.3); opacity: 0; } 70% { transform: scale(1.15); } }
+@keyframes draw { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+@keyframes circle { from { transform: scale(.4); opacity: 0; } 70% { transform: scale(1.06); } }
+@keyframes burst { from { transform: scale(.6); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
+@keyframes pulse-ring { 50% { transform: scale(1.15); opacity: .4; } }
+@keyframes shake { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+@keyframes toast { from { opacity: 0; transform: translateY(12px) scale(.96); } }
+@keyframes dialog { from { opacity: 0; transform: scale(.92); } }
+
+.screen-fwd { animation: in-fwd .28s cubic-bezier(.2,.8,.2,1) both; }
+.screen-back { animation: in-back .28s cubic-bezier(.2,.8,.2,1) both; }
+.stagger { animation: rise .35s ease both; }
+.slot-in { animation: rise .25s ease both; }
+.fade-in { animation: fade .25s ease both; }
+.pop { animation: pop .3s ease both; }
+.circle-in { transform-origin: center; transform-box: fill-box; animation: circle .45s cubic-bezier(.2,.9,.3,1.2) both; }
+.check-draw { stroke-dasharray: 40; animation: draw .4s .25s ease-out both; }
+.ring-burst { animation: burst .8s .15s ease-out both; }
+.pulse { animation: pulse-ring 1.2s ease-in-out infinite; }
+.shake { animation: shake .4s ease both; }
+.toast-in { animation: toast .25s ease both; }
+.dialog-in { animation: dialog .2s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+dist-demo/
+.ssr/
+.astro/
+build/
+
+# Cloudflare / wrangler local state and secrets
+.wrangler/
+.dev.vars
+**/.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Test / report output
+test-results/
+playwright-report/
+reports/
+coverage/
+shots/
+*.log
+npm-debug.log*
+
+# Archives
+*.zip
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.swp

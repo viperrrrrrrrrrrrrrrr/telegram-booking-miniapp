@@ -1,0 +1,39 @@
+{
+  "name": "tg-booking-miniapp",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview --port 8798 --strictPort --host 127.0.0.1",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:a11y": "node tests/a11y.mjs",
+    "test:lighthouse": "node tests/lighthouse.mjs",
+    "test:api": "node tests/api.mjs",
+    "test:e2e-api": "node tests/e2e-api.mjs",
+    "shots": "node scripts/shots.mjs",
+    "video": "node scripts/video.mjs",
+    "dev:api": "npm run build && wrangler d1 migrations apply tg-booking-db --local && wrangler pages dev dist --port 8788",
+    "db:migrate:local": "wrangler d1 migrations apply tg-booking-db --local"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261024.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.5",
+    "wrangler": "^4.152.0"
+  }
+}

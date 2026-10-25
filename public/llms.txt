@@ -1,0 +1,7 @@
+# Petalune Nail Studio — Telegram Mini App demo
+
+> Portfolio demo by Ivan Litvin: a booking Mini App for a fictional nail studio. Sample prices. In the public demo, bookings are stored only in the visitor's browser (localStorage); nothing is sent to a server.
+
+## Pages
+
+- [Booking app](https://tg-booking-miniapp.pages.dev/): pick a service, specialist, date and time; manage "My bookings"; optional studio admin demo.
