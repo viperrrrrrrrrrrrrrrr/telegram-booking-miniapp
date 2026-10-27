@@ -48,8 +48,8 @@ try {
   await test('browser: full booking flow, demo label, guest greeting, in-page Back/Main buttons', async () => {
     const ctx = await newCtx(); const p = await open(ctx);
     assert.match(await p.textContent('[data-testid=greeting]'), /Guest/);
-    assert.match(await p.textContent('[data-testid=demo-label]'), /Demo by Ivan Litvin · fictional studio, sample prices/);
-    assert.match(await p.textContent('[data-testid=mode-chip]'), /Demo mode/);
+    assert.match(await p.textContent('[data-testid=demo-label]'), /Made by Ivan Litvin · sample prices/);
+    assert.match(await p.textContent('[data-testid=mode-chip]'), /Bookings stay on this device/);
     assert.ok(await p.isVisible('[data-testid=browser-header]'));
     assert.ok(!(await main(p).isVisible()), 'main button hidden on home');
     await p.click('[data-testid=service-gel-mani]');
@@ -177,7 +177,7 @@ try {
     await ctx.addInitScript(fakeTelegram({ initData: 'user=%7B%7D&auth_date=1&hash=00', user: { id: 42, first_name: 'Alice' } }));
     const api = []; ctx.on('request', (r) => { if (new URL(r.url()).pathname.startsWith('/api/')) api.push(r.method() + ' ' + new URL(r.url()).pathname); });
     const p = await open(ctx);
-    assert.match(await p.textContent('[data-testid=mode-chip]'), /Demo mode/);
+    assert.match(await p.textContent('[data-testid=mode-chip]'), /Bookings stay on this device/);
     assert.match(await p.textContent('[data-testid=privacy-note]'), /Nothing is sent to any server/);
     await book(p, { name: 'Alice', tg: true });
     assert.deepEqual(api, ['GET /api/health'], 'only the health probe: ' + api.join(', '));

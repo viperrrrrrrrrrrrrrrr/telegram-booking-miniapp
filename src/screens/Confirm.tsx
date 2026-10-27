@@ -103,7 +103,7 @@ export function Confirm() {
 
       <p className="flex gap-2 px-2 text-[13px] leading-snug text-tg-hint" data-testid="confirm-privacy">
         <Lock className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
-        <span>{repo.mode === 'demo' ? `${studio.privacyNote} This is a demo: no real appointment is made.` : 'Your booking is sent to the studio and confirmed in this Telegram chat. Free cancellation from “My bookings”.'}</span>
+        <span>{repo.mode === 'demo' ? `${studio.privacyNote} No real appointment is made.` : 'Your booking is sent to the studio and confirmed in this Telegram chat. Free cancellation from “My bookings”.'}</span>
       </p>
     </div>
   );

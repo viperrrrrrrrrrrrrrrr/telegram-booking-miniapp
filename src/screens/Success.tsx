@@ -32,7 +32,7 @@ export function Success() {
         {pending ? 'Booking your time…' : result.kind === 'rescheduled' ? 'Time changed!' : "You're booked!"}
       </h1>
       <p className="mt-1 max-w-[300px] text-[15px] text-tg-hint">
-        {pending ? 'Holding your slot.' : repo.mode === 'api' ? 'A confirmation is on its way to your Telegram chat. We will also remind you 24 h and 2 h before.' : 'Saved on this device. It is a demo, so no real appointment was made.'}
+        {pending ? 'Holding your slot.' : repo.mode === 'api' ? 'A confirmation is on its way to your Telegram chat. We will also remind you 24 h and 2 h before.' : 'Saved on this device only, so no real appointment was made.'}
       </p>
 
       <div className="mt-6 w-full overflow-hidden rounded-2xl bg-tg-section text-left">
