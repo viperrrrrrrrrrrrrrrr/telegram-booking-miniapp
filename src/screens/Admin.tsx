@@ -69,7 +69,7 @@ export function Admin() {
           <h2 className="text-[20px] font-bold tracking-tight">Studio schedule</h2>
           <p className="flex items-center gap-1.5 text-[12px] text-tg-hint">
             <span aria-hidden="true" className="live-dot size-2 rounded-full bg-emerald-500" />
-            Live · refreshes every 15 s{updatedAt ? ` · ${fmtTime(updatedAt, tz)}` : ''}{repo.mode === 'demo' ? ' · sample data' : ''}
+            Live · refreshes every 15 s{updatedAt ? ` · ${fmtTime(updatedAt, tz)}` : ''}{repo.mode === 'demo' ? ' · demo data' : ''}
           </p>
         </div>
         <button type="button" aria-label="Refresh" onClick={() => { haptic.impact('light'); void load(); }} className="tap grid size-11 place-items-center rounded-full bg-tg-section text-tg-accent">

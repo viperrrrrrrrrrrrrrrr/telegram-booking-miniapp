@@ -79,7 +79,7 @@ export class DemoRepository implements BookingRepository {
     const s = load();
     if (s.idem[key]) { const b = s.bookings.find((x) => x.id === s.idem[key]); if (b) return b; }
     const active = s.bookings.filter((b) => b.status === 'confirmed' && b.start > Date.now()).length;
-    if (active >= slotRules.maxActiveBookings) throw new RepoError('limit_reached', `You can hold up to ${slotRules.maxActiveBookings} upcoming bookings on this device.`);
+    if (active >= slotRules.maxActiveBookings) throw new RepoError('limit_reached', `You can hold up to ${slotRules.maxActiveBookings} upcoming bookings in the demo.`);
     const { svc, staffId } = this.resolve(input.serviceId, input.staffId, input.start);
     const b: Booking = {
       id: `bk-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,

@@ -25,7 +25,7 @@ export function Home() {
         <p className="relative mt-1 text-[15px] text-tg-subtitle">{studio.fullName} · {studio.tagline}</p>
         <p className="relative mt-3 inline-flex items-center gap-1.5 rounded-full bg-tg-section/80 px-2.5 py-1 text-[12px] font-medium text-tg-hint" data-testid="mode-chip">
           <Lock className="size-3.5" aria-hidden="true" />
-          {repo.mode === 'demo' ? 'Bookings stay on this device' : 'Live · secured by Telegram'}
+          {repo.mode === 'demo' ? 'Demo mode · bookings stay on this device' : 'Live · secured by Telegram'}
         </p>
       </header>
 
@@ -94,8 +94,8 @@ function Footer() {
       <p data-testid="privacy-note">{repo.mode === 'demo' ? studio.privacyNote : 'Live mode: bookings are stored by the studio and confirmed in your Telegram chat.'}</p>
       {repo.mode === 'demo' && (
         <label className="inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-tg-section px-3 py-1.5 text-[13px] text-tg-text">
-          <span>Studio admin view</span>
-          <button type="button" role="switch" aria-checked={demoAdmin} aria-label="Studio admin view" data-testid="admin-toggle"
+          <span>Studio admin demo</span>
+          <button type="button" role="switch" aria-checked={demoAdmin} aria-label="Studio admin demo" data-testid="admin-toggle"
             onClick={() => { haptic.impact('light'); const v = !demoAdmin; setDemoAdmin(v); if (v) setTab('studio'); else if (tab === 'studio') setTab('book'); }}
             className={`relative h-6 w-10 rounded-full transition-colors ${demoAdmin ? 'bg-tg-button' : 'bg-tg-hint/40'}`}>
             <span className={`absolute top-0.5 left-0.5 size-5 rounded-full bg-white shadow transition-transform ${demoAdmin ? 'translate-x-4' : ''}`} />

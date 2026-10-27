@@ -8,7 +8,7 @@ export const studio = {
   name: 'Petalune',
   fullName: 'Petalune Nail Studio',
   tagline: 'Nails, pedicure & brows',
-  demoLabel: 'Made by Ivan Litvin · sample prices',
+  demoLabel: 'Demo by Ivan Litvin · fictional studio, sample prices',
   privacyNote: 'Bookings stay on this device. Nothing is sent to any server.',
   currency: 'USD',
   locale: 'en-US',
